@@ -6,9 +6,87 @@
   <packaging>pom</packaging>
   <description>Personal WEB portal</description>
   <url>http://www.kalafatic.com</url>
-  <name>portal-web</name>
+  <name>portal</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <junit.version>3.8.1</junit.version> <!-- Recommended: Upgrade to JUnit 5 or at least 4.13.2 -->
+    <javaee-api.version>7.0</javaee-api.version> <!-- Recommended: Consider 8.0 if JBoss EAP 7.4 supports it well -->
+    <resteasy.version>3.15.6.Final</resteasy.version> <!-- Updated to align with JBoss EAP 7.4.x -->
+    <mysql-connector.version>8.0.33</mysql-connector.version> <!-- Updated to a newer patch -->
+    <jboss.deploy.path.backend>/home/petr/Servers/jboss-eap-7.4_BE/standalone/deployments/</jboss.deploy.path.backend>
+    <jboss.deploy.path.frontend>/home/petr/Servers/jboss-eap-7.4_FE/standalone/deployments/</jboss.deploy.path.frontend>
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version> <!-- Current: 3.8.1, Latest: 3.13.0 -->
+    <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version> <!-- Updated from 3.2.0 -->
+  </properties>
+
   <modules>
   	<module>../portal-backend</module>
   	<module>../portal-frontend</module>
   </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>${javaee-api.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-jaxrs</artifactId>
+        <version>${resteasy.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-jackson2-provider</artifactId>
+        <version>${resteasy.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql-connector.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin.version}</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-ear-plugin</artifactId>
+          <version>3.3.0</version> <!-- Already latest -->
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.4.0</version> <!-- Already latest -->
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven-resources-plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>

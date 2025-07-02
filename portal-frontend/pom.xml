@@ -6,7 +6,7 @@
 	<artifactId>portal-frontend</artifactId>
 	<packaging>war</packaging>
 
-	<name>portal</name>
+	<name>portal-frontend</name>
 	<description>Personal FE portal module</description>
 	<url>http://www.kalafatic.com</url>
 
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<!-- Version managed by parent -->
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -38,17 +38,13 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<!-- Version managed by parent -->
 				<configuration>
 					<packagingExcludes>%regex[WEB-INF/lib/jboss-(?!vfs).*.jar]</packagingExcludes>
-					<webXml>${maven.war.webxml}</webXml>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.4.0</version>
-				<configuration>
 					<webXml>${project.basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+					<!-- If a custom web.xml location is needed via a property, it could be like: -->
+					<!-- <webXml>${maven.war.webxml}</webXml> -->
+					<!-- But ensure 'maven.war.webxml' property is defined, e.g. in <properties> -->
 				</configuration>
 			</plugin>
 
@@ -62,8 +58,9 @@
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
-						<version>3.2.0</version>
+						<!-- Version managed by parent -->
 						<executions>
 							<execution>
 								<id>copy-resources-war</id>
@@ -73,8 +70,7 @@
 									<goal>copy-resources</goal>
 								</goals>
 								<configuration>
-									<outputDirectory>
-										/home/petr/Servers/jboss-eap-7.4_FE/standalone/deployments/</outputDirectory>
+									<outputDirectory>${jboss.deploy.path.frontend}</outputDirectory>
 									<resources>
 										<resource>
 											<directory>
