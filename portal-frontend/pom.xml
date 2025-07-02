@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>portal-frontend</artifactId>
+	<packaging>war</packaging>
+
+	<name>portal</name>
+	<description>Personal FE portal module</description>
+	<url>http://www.kalafatic.com</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<parent>
+		<groupId>com.kalafatic.web</groupId>
+		<artifactId>portal</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../portal</relativePath>
+	</parent>
+
+	<build>
+		<finalName>portal</finalName>
+		<plugins>
+			<!-- Balickovani do WAR -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<packagingExcludes>%regex[WEB-INF/lib/jboss-(?!vfs).*.jar]</packagingExcludes>
+					<webXml>${maven.war.webxml}</webXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.4.0</version>
+				<configuration>
+					<webXml>${project.basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>eclipse</id>
+			<!-- profil vytvori ear a nakopiruje ho na Jboss na AS -->
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>3.2.0</version>
+						<executions>
+							<execution>
+								<id>copy-resources-war</id>
+								<!-- here the phase you need -->
+								<phase>verify</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>
+										/home/petr/Servers/jboss-eap-7.4_FE/standalone/deployments/</outputDirectory>
+									<resources>
+										<resource>
+											<directory>
+												${project.build.directory}</directory>
+											<includes>
+												<include>portal.war</include>
+											</includes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
