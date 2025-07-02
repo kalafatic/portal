@@ -2,10 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.kalafatic.web</groupId>
+  <parent>
+    <groupId>com.kalafatic.web</groupId>
+    <artifactId>portal</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../portal/pom.xml</relativePath>
+  </parent>
+
   <artifactId>portal-backend</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>ear</packaging>
 
   <name>portal-backend</name>
   <url>http://maven.apache.org</url>
@@ -21,21 +26,36 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ear-plugin</artifactId>
-				<version>2.6</version>
+				<!-- Version managed by parent -->
 				<configuration>
-					<version>6</version>
+					<version>6</version> <!-- This is JEE version for EAR, not plugin version -->
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<!-- Ensure the WAR from portal-frontend is included if needed, or other modules -->
+					<!-- For now, assuming direct dependencies are sufficient or it's self-contained -->
+					<modules>
+						<!-- Example: If portal-frontend.war should be part of this EAR -->
+						<!--
+                        <webModule>
+                            <groupId>com.kalafatic.web</groupId>
+                            <artifactId>portal-frontend</artifactId>
+                            <contextRoot>/portal</contextRoot>
+                        </webModule>
+                         -->
+					</modules>
 				</configuration>
 			</plugin>
 			
-			<plugin>
+			<!-- This plugin is not typically needed for 'ear' packaging unless creating a WAR within the EAR -->
+			<!-- Removing it as it seems out of place for an EAR module itself. -->
+			<!-- If portal-backend were to produce a WAR to be included in an EAR, structure would differ. -->
+			<!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
-            </plugin>
+            </plugin> -->
 
 		</plugins>
 	</build>
@@ -45,33 +65,35 @@
     	<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<!-- Version managed by parent -->
 			<scope>test</scope>
 		</dependency>
 
-
+		<!-- This project is 'ear', it typically bundles WARs, JARs, EJBs. -->
+		<!-- The Java EE API is usually needed by modules *within* the EAR (like WARs or EJB JARs), not the EAR itself. -->
+		<!-- However, keeping it if there's a specific reason for now. -->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
-			<version>7.0</version>
+			<!-- Version managed by parent -->
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxrs</artifactId>
-			<version>3.0.12.Final</version>
+			<!-- Version managed by parent -->
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jackson2-provider</artifactId>
-			<version>3.0.12.Final</version>
+			<!-- Version managed by parent -->
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.28</version>
+			<!-- Version managed by parent -->
 		</dependency>
   </dependencies>
   
@@ -82,8 +104,9 @@
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-resources-plugin</artifactId>
-						<version>3.2.0</version>
+						<!-- Version managed by parent -->
 						<executions>
 							<execution>
 								<id>copy-resources-ear</id>
@@ -93,8 +116,7 @@
 									<goal>copy-resources</goal>
 								</goals>
 								<configuration>
-									<outputDirectory>
-										/home/petr/Servers/jboss-eap-7.4_BE/standalone/deployments/</outputDirectory>
+									<outputDirectory>${jboss.deploy.path.backend}</outputDirectory>
 									<resources>
 										<resource>
 											<directory>
