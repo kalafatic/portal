@@ -21,17 +21,17 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
 			<name>org.jboss.tools.cdi.core.cdibuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.wst.validation.validationbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -46,4 +46,11 @@
 		<nature>org.jboss.tools.jst.web.kb.kbnature</nature>
 		<nature>org.jboss.tools.cdi.core.cdinature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/resources/standalone.xml</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Servers/jboss-eap-7.4_FE/standalone/configuration/standalone.xml</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

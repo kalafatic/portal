@@ -1,5 +1,0 @@
-com/example/entity/Task.class
-com/example/ejb/TaskServiceImpl.class
-com/example/ejb/TaskService.class
-com/example/rest/TaskResource.class
-com/kalafatic/web/portal_backend/App.class

@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="portal">
+            
+    
+    <wb-module deploy-name="portal-backend">
+                        
+        
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-        <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
-        <dependent-module archiveName="mysql-connector-java-8.0.28.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar">
+                        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/application"/>
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/src/main/resources"/>
+                
+        <dependent-module archiveName="com.mysql-mysql-connector-j-8.0.33.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar">
+                        
             <dependency-type>uses</dependency-type>
+                    
         </dependent-module>
-        <dependent-module archiveName="protobuf-java-3.11.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/protobuf/protobuf-java/3.11.4/protobuf-java-3.11.4.jar">
+                
+        <dependent-module archiveName="com.google.protobuf-protobuf-java-3.21.9.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar">
+                        
             <dependency-type>uses</dependency-type>
+                    
         </dependent-module>
+        <property name="java-output-path" value="/portal-backend/build/classes"/>
+                    
+    
     </wb-module>
+        
+
 </project-modules>
