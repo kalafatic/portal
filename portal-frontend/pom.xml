@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>portal-frontend</artifactId>
@@ -9,6 +9,7 @@
 	<name>portal-frontend</name>
 	<description>Personal FE portal module</description>
 	<url>http://www.kalafatic.com</url>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,8 +21,15 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<!-- Version managed by parent -->
+			<version>4.12</version>
 			<scope>test</scope>
+		</dependency>
+		<!-- Servlet API (provided by JBoss) -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<parent>
@@ -37,14 +45,13 @@
 			<!-- Balickovani do WAR -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<!-- Version managed by parent -->
+				<artifactId>maven-war-plugin</artifactId>	
+				<version>3.4.0</version>			
 				<configuration>
 					<packagingExcludes>%regex[WEB-INF/lib/jboss-(?!vfs).*.jar]</packagingExcludes>
-					<webXml>${project.basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
-					<!-- If a custom web.xml location is needed via a property, it could be like: -->
-					<!-- <webXml>${maven.war.webxml}</webXml> -->
-					<!-- But ensure 'maven.war.webxml' property is defined, e.g. in <properties> -->
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					
 				</configuration>
 			</plugin>
 
@@ -54,7 +61,7 @@
 	<profiles>
 		<profile>
 			<id>eclipse</id>
-			<!-- profil vytvori ear a nakopiruje ho na Jboss na AS -->
+			<!-- profil vytvori war a nakopiruje ho na Jboss na AS -->
 			<build>
 				<plugins>
 					<plugin>
@@ -70,7 +77,9 @@
 									<goal>copy-resources</goal>
 								</goals>
 								<configuration>
-									<outputDirectory>${jboss.deploy.path.frontend}</outputDirectory>
+								<overwrite>true</overwrite>
+									<outputDirectory>
+										${jboss.deploy.path.frontend}</outputDirectory>
 									<resources>
 										<resource>
 											<directory>
@@ -80,6 +89,7 @@
 											</includes>
 										</resource>
 									</resources>
+									
 								</configuration>
 							</execution>
 						</executions>
@@ -88,4 +98,5 @@
 			</build>
 		</profile>
 	</profiles>
+	<groupId>com.kalafatic.web</groupId>
 </project>

@@ -1,137 +1,92 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.kalafatic.web</groupId>
-    <artifactId>portal</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../portal/pom.xml</relativePath>
-  </parent>
+	<parent>
+		<groupId>com.kalafatic.web</groupId>
+		<artifactId>portal</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../portal/pom.xml</relativePath>
+	</parent>
 
-  <artifactId>portal-backend</artifactId>
-  <packaging>ear</packaging>
+	<artifactId>portal-backend</artifactId>
+	<packaging>war</packaging>
 
-  <name>portal-backend</name>
-  <url>http://maven.apache.org</url>
+	<name>portal</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
 	<build>
-		<finalName>portal-backend</finalName>
+		<finalName>portal</finalName>
 		<plugins>
-			<!-- Balickovani do EAR -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-ear-plugin</artifactId>
-				<!-- Version managed by parent -->
-				<configuration>
-					<version>6</version> <!-- This is JEE version for EAR, not plugin version -->
-					<defaultLibBundleDir>lib</defaultLibBundleDir>
-					<!-- Ensure the WAR from portal-frontend is included if needed, or other modules -->
-					<!-- For now, assuming direct dependencies are sufficient or it's self-contained -->
-					<modules>
-						<!-- Example: If portal-frontend.war should be part of this EAR -->
-						<!--
-                        <webModule>
-                            <groupId>com.kalafatic.web</groupId>
-                            <artifactId>portal-frontend</artifactId>
-                            <contextRoot>/portal</contextRoot>
-                        </webModule>
-                         -->
-					</modules>
-				</configuration>
-			</plugin>
-			
-			<!-- This plugin is not typically needed for 'ear' packaging unless creating a WAR within the EAR -->
-			<!-- Removing it as it seems out of place for an EAR module itself. -->
-			<!-- If portal-backend were to produce a WAR to be included in an EAR, structure would differ. -->
-			<!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.2</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin> -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.13.0</version>
+            <configuration>
+                <source>1.8</source> <!-- Adjust to your Java version -->
+                <target>1.8</target>
+            </configuration>
+        </plugin>       
 
 		</plugins>
 	</build>
 
 
-  <dependencies>
-    	<dependency>
+	<dependencies>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<!-- Version managed by parent -->
 			<scope>test</scope>
 		</dependency>
 
+
+		<!-- Servlet API (provided by JBoss) -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+
+		</dependency>
 		<!-- This project is 'ear', it typically bundles WARs, JARs, EJBs. -->
-		<!-- The Java EE API is usually needed by modules *within* the EAR (like WARs or EJB JARs), not the EAR itself. -->
+		<!-- The Java EE API is usually needed by modules *within* the EAR (like
+		WARs or EJB JARs), not the EAR itself. -->
 		<!-- However, keeping it if there's a specific reason for now. -->
+		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
-			<!-- Version managed by parent -->
-			<scope>provided</scope>
+			<version>7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxrs</artifactId>
-			<!-- Version managed by parent -->
+			<version>3.15.6.Final</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jackson2-provider</artifactId>
-			<!-- Version managed by parent -->
+			<version>3.15.6.Final</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<!-- Version managed by parent -->
+			<version>8.0.33</version>
 		</dependency>
-  </dependencies>
-  
-  <profiles>
-		<profile>
-			<id>eclipse</id>
-			<!-- profil vytvori ear a nakopiruje ho na Jboss na AS -->
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-resources-plugin</artifactId>
-						<!-- Version managed by parent -->
-						<executions>
-							<execution>
-								<id>copy-resources-ear</id>
-								<!-- here the phase you need -->
-								<phase>verify</phase>
-								<goals>
-									<goal>copy-resources</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${jboss.deploy.path.backend}</outputDirectory>
-									<resources>
-										<resource>
-											<directory>
-												${project.build.directory}</directory>
-											<includes>
-												<include>portal-backend.ear</include>
-											</includes>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+	</dependencies>
+
 </project>
