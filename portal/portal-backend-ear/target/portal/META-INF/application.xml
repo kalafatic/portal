@@ -5,7 +5,7 @@
   <module>
     <web>
       <web-uri>com.kalafatic.web-portal-backend-0.0.1-SNAPSHOT.war</web-uri>
-      <context-root>/portal-backend</context-root>
+      <context-root>/portal</context-root>
     </web>
   </module>
   <library-directory>lib</library-directory>
