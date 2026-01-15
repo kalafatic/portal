@@ -1,44 +1,33 @@
-path/to/filename.js
-<%-- src/main/webapp/index.jsp --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>JSP + CSS ukázka</title>
-<style>
+/* src/main/webapp/css/theme.css */
 body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	background-color: #f4f4f4;
+    background-color: #f0f8ff; /* AliceBlue */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-.btn {
-	padding: 10px 20px;
-	font-size: 16px;
-	color: white;
-	background-color: #007bff;
-	border: none;
-	cursor: pointer;
-	text-decoration: none;
-	margin: 10px;
+header {
+    background-color: #add8e6; /* LightBlue */
+    color: white;
+    text-align: center;
+    padding: 1em 0;
 }
 
-.btn:hover {
-	background-color: #0056b3;
+main {
+    padding: 20px;
 }
-</style>
-</head>
-<body>
 
-	<form action="login.jsp" method="get">
-		<button type="submit" class="btn">Přihlásit se</button>
-	</form>
-	<button onclick="location.href='login.jsp'" class="btn">Přihlásit
-		se</button>
-	<a href="login.jsp" class="btn">Přihlásit se</a>
-</body>
-</html>
+section {
+    margin-bottom: 20px;
+    background-color: #ffffff; /* White */
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #add8e6; /* LightBlue */
+    color: white;
+}
