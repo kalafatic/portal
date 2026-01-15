@@ -3,7 +3,7 @@
 <jsp:useBean id="userBean" class="com.kalafatic.web.UserBean" />
 <% String lang = request.getParameter("lang"); if (lang == null) { lang = "en"; } %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title><%= userBean.getString("title", lang) %></title>
