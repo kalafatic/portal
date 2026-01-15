@@ -5,7 +5,7 @@ path/to/filename.js
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>JSP + CSS ukázka</title>
+    <title>JSP + CSS example</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/theme.css" />
     <style>
@@ -29,21 +29,21 @@ path/to/filename.js
 </head>
 <body>
     <div class="menu">
-        <a href="#home">Domů</a>
-        <a href="#services">Služby</a>
-        <a href="#contact">Kontakt</a>
-        <a href="login.jsp" style="float:right;">Přihlásit se</a>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="login.jsp" style="float:right;">Login</a>
     </div>
     <header>
-        <h1>Vítej na mém osobním webu!</h1>
+        <h1>Welcome to my personal website!</h1>
     </header>
     <main>
         <section>
-            <p>Tento web je vytvořen pro ukázku JSP a CSS.</p>
+            <p>This website is created for JSP and CSS demonstration purposes.</p>
         </section>
     </main>
     <footer>
-        <p>© 2023 Můj Osobní Web</p>
+        <p>© 2023 My Personal Website</p>
     </footer>
 </body>
 </html>
