@@ -1,11 +1,12 @@
-path/to/filename.js
 <%-- src/main/webapp/index.jsp --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="userBean" class="com.kalafatic.web.UserBean" />
+<% String lang = request.getParameter("lang"); if (lang == null) { lang = "en"; } %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>JSP + CSS example</title>
+    <title><%= userBean.getString("title", lang) %></title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/theme.css" />
     <style>
@@ -29,21 +30,21 @@ path/to/filename.js
 </head>
 <body>
     <div class="menu">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <a href="login.jsp" style="float:right;">Login</a>
+        <a href="#home"><%= userBean.getString("home", lang) %></a>
+        <a href="#services"><%= userBean.getString("services", lang) %></a>
+        <a href="#contact"><%= userBean.getString("contact", lang) %></a>
+        <a href="login.jsp" style="float:right;"><%= userBean.getString("login", lang) %></a>
     </div>
     <header>
-        <h1>Welcome to my personal website!</h1>
+        <h1><%= userBean.getString("welcome", lang) %></h1>
     </header>
     <main>
         <section>
-            <p>This website is created for JSP and CSS demonstration purposes.</p>
+            <p><%= userBean.getString("description", lang) %></p>
         </section>
     </main>
     <footer>
-        <p>© 2023 My Personal Website</p>
+        <p><%= userBean.getString("copyright", lang) %></p>
     </footer>
 </body>
 </html>
