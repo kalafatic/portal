@@ -10,8 +10,19 @@ path/to/filename.js
     <link rel="stylesheet" href="css/theme.css" />
 </head>
 <body>
-    <form action="login.jsp" method="get">
-        <button type="submit">Přihlásit se</button>
-    </form>
+    <header>
+        <h1>Vítej na mém osobním webu!</h1>
+    </header>
+    <main>
+        <section>
+            <p>Tento web je vytvořen pro ukázku JSP a CSS.</p>
+        </section>
+        <section>
+            <a href="login.jsp" class="btn">Přihlásit se</a>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 Můj Osobní Web</p>
+    </footer>
 </body>
 </html>
