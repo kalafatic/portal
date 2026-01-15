@@ -1,7 +1,8 @@
+path/to/filename.js
 <%-- src/main/webapp/index.jsp --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>JSP + CSS ukázka</title>
@@ -28,21 +29,21 @@
 </head>
 <body>
     <div class="menu">
-        <a href="#home">Domů</a>
-        <a href="#services">Služby</a>
-        <a href="#contact">Kontakt</a>
-        <a href="login.jsp" style="float:right;">Přihlásit se</a>
+        <a href="#home" lang="en">Home</a>
+        <a href="#services" lang="en">Services</a>
+        <a href="#contact" lang="en">Contact</a>
+        <a href="login.jsp" style="float:right;" lang="en">Login</a>
     </div>
     <header>
-        <h1>Vítej na mém osobním webu!</h1>
+        <h1><%= getString("Welcome to my personal website!") %></h1>
     </header>
     <main>
         <section>
-            <p>Tento web je vytvořen pro ukázku JSP a CSS.</p>
+            <p><%= getString("This web is created for JSP and CSS example.") %></p>
         </section>
     </main>
     <footer>
-        <p>© 2023 Můj Osobní Web</p>
+        <p><%= getString("© 2023 My Personal Website") %></p>
     </footer>
 </body>
 </html>
