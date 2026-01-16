@@ -39,11 +39,9 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
-                
-        <dependent-module archiveName="portal-backend-0.0.1-SNAPSHOT.ear" deploy-path="/WEB-INF/lib" handle="module:/resource/portal-backend/portal-backend">
-                        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <dependent-module archiveName="portal-common-0.0.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/portal-common/portal-common">
             <dependency-type>uses</dependency-type>
-                    
         </dependent-module>
                                                         
         

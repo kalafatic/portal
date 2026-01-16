@@ -44,13 +44,17 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
- 		
+		<dependency>
+			<groupId>com.kalafatic.web</groupId>
+			<artifactId>portal-common</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+		</dependency>
  	</dependencies>
 	<parent>
 		<groupId>com.kalafatic.web</groupId>
 		<artifactId>portal</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../portal</relativePath>
+		<version>0.0.2-SNAPSHOT</version>
+		<relativePath>../portal/pom.xml</relativePath>
 	</parent>
 
 	<build>
@@ -113,4 +117,5 @@
 		</profile>
 	</profiles>
 	<groupId>com.kalafatic.web</groupId>
+	<version>0.0.2-SNAPSHOT</version>
 </project>

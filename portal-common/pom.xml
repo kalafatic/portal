@@ -3,7 +3,10 @@
   <parent>
     <groupId>com.kalafatic.web</groupId>
     <artifactId>portal</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
+    <relativePath>../portal/pom.xml</relativePath>
   </parent>
-  <artifactId> portal-common</artifactId>
+  <groupId>com.kalafatic.web</groupId>
+  <artifactId>portal-common</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
 </project>

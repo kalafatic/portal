@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kalafatic.web</groupId>
   <artifactId>portal</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <description>Personal WEB portal</description>
   <url>http://www.kalafatic.com</url>
@@ -21,10 +21,9 @@
   </properties>
 
   <modules>
-  	<module>../portal-backend</module>
-  	<module>../portal-frontend</module>
-
-  	<module>portal-common</module>
+   	<module>../portal-backend</module>
+   	<module>../portal-frontend</module>
+    <module>../portal-common</module>
   </modules>
 
   <dependencyManagement>

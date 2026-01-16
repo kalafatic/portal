@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.kalafatic.web</groupId>
 		<artifactId>portal</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>../portal/pom.xml</relativePath>
 	</parent>
 
@@ -95,6 +95,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.33</version>
 		</dependency>
+		<dependency>
+			<groupId>com.kalafatic.web</groupId>
+			<artifactId>portal-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<groupId>com.kalafatic.web</groupId>
@@ -139,5 +144,5 @@
 			</build>
 		</profile>
 	</profiles>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 </project>
