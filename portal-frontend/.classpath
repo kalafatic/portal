@@ -24,4 +24,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/portal-backend"/>
 </classpath>
