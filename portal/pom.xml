@@ -23,7 +23,8 @@
   <modules>
   	<module>../portal-backend</module>
   	<module>../portal-frontend</module>
-  	
+
+  	<module>portal-common</module>
   </modules>
 
   <dependencyManagement>

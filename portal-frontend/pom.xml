@@ -37,8 +37,15 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<type>ear</type>
 		</dependency>
-		
-	</dependencies>
+
+		<!-- JSTL for fmt and core taglibs -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+ 		
+ 	</dependencies>
 	<parent>
 		<groupId>com.kalafatic.web</groupId>
 		<artifactId>portal</artifactId>
