@@ -23,7 +23,7 @@
   <modules>
   	<module>../portal-backend</module>
   	<module>../portal-frontend</module>
-  	<module>portal-backend-ear</module>
+  	
   </modules>
 
   <dependencyManagement>

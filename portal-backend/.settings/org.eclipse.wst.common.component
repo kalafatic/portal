@@ -19,7 +19,8 @@
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-        <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/src/main/application"/>
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
         <dependent-module archiveName="javax.servlet-javax.servlet-api-3.1.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -32,11 +33,9 @@
         <dependent-module archiveName="com.google.protobuf-protobuf-java-3.21.9.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                        
-        
-        <property name="java-output-path" value="/portal-backend/target/classes"/>
                 
         <property name="context-root" value="portal"/>
+        <property name="java-output-path" value="/portal-backend/build/classes"/>
                                                                             
     
     
