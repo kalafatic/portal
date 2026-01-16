@@ -11,7 +11,7 @@
 	</parent>
 
 	<artifactId>portal-backend</artifactId>
-	<packaging>war</packaging>
+	<packaging>ear</packaging>
 
 	<name>portal</name>
 	<url>http://www.kalafatic.com</url>
@@ -99,4 +99,44 @@
 
 	<groupId>com.kalafatic.web</groupId>
 	<description>Personal BE portal module</description>
+	
+	<profiles>
+		<profile>
+			<id>eclipse</id>
+			<!-- profil vytvori ear a nakopiruje ho na Jboss na AS -->
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<!-- Version managed by parent -->
+						<executions>
+							<execution>
+								<id>copy-resources-ear</id>
+								<!-- here the phase you need -->
+								<phase>verify</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<overwrite>true</overwrite>
+									<outputDirectory>
+										${jboss.deploy.path.backend}</outputDirectory>
+									<resources>
+										<resource>
+											<directory>
+												${project.build.directory}</directory>
+											<includes>
+												<include>portal.ear</include>
+											</includes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

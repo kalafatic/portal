@@ -32,13 +32,12 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.kalafatic.web</groupId>
-			<artifactId>portal-backend</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>jar</type>
-			<classifier>classes</classifier>
-			<scope>provided</scope>
+		<groupId>com.kalafatic.web</groupId>
+		<artifactId>portal-backend</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<type>ear</type>
 		</dependency>
+		
 	</dependencies>
 	<parent>
 		<groupId>com.kalafatic.web</groupId>

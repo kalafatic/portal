@@ -3,6 +3,7 @@
 	<name>portal-frontend</name>
 	<comment></comment>
 	<projects>
+		<project>portal-backend</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
