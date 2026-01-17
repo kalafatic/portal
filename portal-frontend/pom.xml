@@ -31,13 +31,6 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-		<groupId>com.kalafatic.web</groupId>
-		<artifactId>portal-backend</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<type>ear</type>
-		</dependency>
-
 		<!-- JSTL for fmt and core taglibs -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -47,13 +40,13 @@
 		<dependency>
 			<groupId>com.kalafatic.web</groupId>
 			<artifactId>portal-common</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
+			<version>2.6.1</version>
 		</dependency>
  	</dependencies>
 	<parent>
 		<groupId>com.kalafatic.web</groupId>
 		<artifactId>portal</artifactId>
-		<version>0.0.2-SNAPSHOT</version>
+		<version>2.6.1</version>
 		<relativePath>../portal/pom.xml</relativePath>
 	</parent>
 
@@ -117,5 +110,5 @@
 		</profile>
 	</profiles>
 	<groupId>com.kalafatic.web</groupId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>2.6.1</version>
 </project>

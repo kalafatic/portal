@@ -1,0 +1,15 @@
+embed-server --server-config=standalone.xml --std-out=echo
+
+# Add MySQL driver
+module add --name=com.mysql --resources=mysql-connector-java-8.0.33.jar --dependencies=javax.api,javax.transaction.api
+
+# Add MySQL driver as a datasource driver
+/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-class-name=com.mysql.cj.jdbc.Driver)
+
+# Add the datasource
+data-source add --jndi-name=java:jboss/datasources/MySqlDS --name=MySqlPool --connection-url=jdbc:mysql://localhost:3306/portal --driver-name=mysql --user-name=${env.DB_USER} --password=${env.DB_PASSWORD}
+
+# Reload the server
+:reload
+
+stop-embedded-server

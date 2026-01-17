@@ -6,10 +6,19 @@
 </head>
 <body>
   <h2>Login</h2>
-  <form action="http://localhost:9080/portal/login" method="post">
+  <%
+    String message = (String) request.getAttribute("message");
+    if (message != null) {
+  %>
+    <p style="color:red;"><%= message %></p>
+  <%
+    }
+  %>
+  <form action="login" method="post">
     <input type="text" name="username" placeholder="Username" required /><br/>
     <input type="password" name="password" placeholder="Password" required /><br/>
     <input type="submit" value="Login" />
   </form>
+  <a href="resetPassword.jsp">Forgot Password?</a>
 </body>
 </html>

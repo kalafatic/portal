@@ -19,20 +19,13 @@ public class LoginServlet extends HttpServlet {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 
-			// TODO: Validace uživatele
-			//if ("admin".equals(username) && "secret".equals(password)) {
 			if(UserBean.validate(username, password)) {
-				response.sendRedirect("success.jsp");
+				request.getSession().setAttribute("username", username);
+				response.sendRedirect("welcome.jsp");
 			} else {
-				//RequestDispatcher dispatcher = request.getRequestDispatcher("error.jsp");
-				//dispatcher.forward(request, response);
-				//response.sendRedirect(request.getContextPath() + "/error.jsp");
-				//response.sendRedirect("error.jsp");
-				String redirectUrl = "http://" + request.getServerName() + ":18080/portal/error.jsp";
-				response.sendRedirect(redirectUrl);
-
-				
-			}		
+				request.setAttribute("message", "Invalid username or password.");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
