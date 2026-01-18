@@ -10,8 +10,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.version>3.8.1</junit.version> <!-- Recommended: Upgrade to JUnit 5 or at least 4.13.2 -->
-    <javaee-api.version>7.0</javaee-api.version> <!-- Recommended: Consider 8.0 if JBoss EAP 7.4 supports it well -->
+    <junit.version>4.13.2</junit.version>
+    <javaee-api.version>8.0</javaee-api.version>
     <resteasy.version>3.15.6.Final</resteasy.version> <!-- Updated to align with JBoss EAP 7.4.x -->
     <mysql-connector.version>8.0.33</mysql-connector.version> <!-- Updated to a newer patch -->
     <jboss.deploy.path.backend>/home/petr/Servers/jboss-eap-7.4_BE/standalone/deployments/</jboss.deploy.path.backend>
