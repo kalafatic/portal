@@ -9,4 +9,11 @@
   <groupId>com.kalafatic.web</groupId>
   <artifactId>portal-common</artifactId>
   <version>2.6.1</version>
+  <dependencies>
+    <dependency>
+      <groupId>org.mindrot</groupId>
+      <artifactId>jbcrypt</artifactId>
+      <version>0.4</version>
+    </dependency>
+  </dependencies>
 </project>
