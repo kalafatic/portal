@@ -1,24 +1,12 @@
-# Kvuli mavenu, nechceme cely target adresar
+#
 */target/**
-/target/**
 
-# Zakazeme cely .idea adresar, i kdyz je to nize nagenerovano "podrobneji"
+#
 .idea
 
-# Zakazeme cely .run adresar
-.run
-
-# NetBeans
+# NetBeans actions
 nbactions.xml
-nb_jr_remoting.cfg
-nb-configuration.xml
 
-# Projektova metadata pro Eclipse
-# Techto muze byt daleko vic, ale nasledujici jsou v javovskych
-# projektech nejcastejsi.
-.settings/
-.classpath
-.project
 
 # Created by .ignore support plugin (hsz.mobi)
 ### VisualStudio template
@@ -689,20 +677,4 @@ local.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-#JRebel
-rebel.xml
-rebel-remote.xml
 
-#macOS Finder
-*.DS_Store
-
-# Povoleni copyright pro IDEU
-!.idea/copyright
-
-# Windows - nastavení složky
-desktop.ini
-
-# Faces-config
-**/faces-config.NavData
-
-target/
