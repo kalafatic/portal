@@ -41,26 +41,26 @@
 			<artifactId>portal-common</artifactId>
 			<version>2.6.1</version>
 		</dependency>
-        <!-- JSF API -->
-        <dependency>
-            <groupId>javax.faces</groupId>
-            <artifactId>javax.faces-api</artifactId>
-            <version>2.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- JSF Implementation (Mojarra) -->
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.faces</artifactId>
-            <version>2.2.20</version>
-        </dependency>
-        <!-- PrimeFaces -->
-        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>11.0.0</version>
-        </dependency>
- 	</dependencies>
+		<!-- JSF API -->
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- JSF Implementation (Mojarra) -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.2.20</version>
+		</dependency>
+		<!-- PrimeFaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>11.0.0</version>
+		</dependency>
+	</dependencies>
 	<parent>
 		<groupId>com.kalafatic.web</groupId>
 		<artifactId>portal</artifactId>
@@ -74,13 +74,13 @@
 			<!-- Balickovani do WAR -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>	
-				<version>3.4.0</version>			
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.4.0</version>
 				<configuration>
 					<packagingExcludes>%regex[WEB-INF/lib/jboss-(?!vfs).*.jar]</packagingExcludes>
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					
+
 				</configuration>
 			</plugin>
 
@@ -106,7 +106,7 @@
 									<goal>copy-resources</goal>
 								</goals>
 								<configuration>
-								<overwrite>true</overwrite>
+									<overwrite>true</overwrite>
 									<outputDirectory>
 										${jboss.deploy.path.frontend}</outputDirectory>
 									<resources>
@@ -118,10 +118,23 @@
 											</includes>
 										</resource>
 									</resources>
-									
+
 								</configuration>
 							</execution>
 						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-clean-plugin</artifactId>
+						<version>3.3.2</version>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>
+										${jboss.deploy.path.frontend}/portal.ear</directory>
+									<followSymlinks>false</followSymlinks>
+								</fileset>
+							</filesets>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
