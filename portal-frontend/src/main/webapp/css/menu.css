@@ -4,24 +4,19 @@
     left: 0;
     width: 100%;
     background-color: #1a1a1a;
-    padding: 10px 0;
-    text-align: center;
+    padding: 10px 20px;
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
 }
 
-.menu.left {
-    text-align: left;
-}
-
-.menu ul {
+.menu ul.nav-links {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: inline-block;
-}
-
-.menu.left ul {
-    display: block;
+    display: flex;
 }
 
 .menu li {
