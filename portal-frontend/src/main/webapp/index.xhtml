@@ -7,13 +7,13 @@
     <title>Welcome</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/menu.css"/>
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css"/>
 </h:head>
 <h:body>
     <ui:include src="menu.xhtml" />
-    <h2>Welcome, #{sessionScope.username}!</h2>
-    <p>You have successfully logged in.</p>
-    <h:form>
-        <p:commandButton value="Logout" action="#{loginBean.logout}"/>
-    </h:form>
+    <div class="main-content">
+        <h2>Welcome, #{sessionScope.username}!</h2>
+        <p>You have successfully logged in.</p>
+    </div>
 </h:body>
 </html>
