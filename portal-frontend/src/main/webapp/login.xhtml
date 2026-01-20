@@ -10,10 +10,11 @@
 </h:head>
 <h:body>
     <ui:include src="menu.xhtml" />
-    <h2>Login</h2>
-    <h:form>
-        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
-        <p:panelGrid columns="2">
+    <div class="login-form-container">
+        <h2>Login</h2>
+        <h:form>
+            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+            <p:panelGrid columns="2">
             <p:outputLabel for="username" value="Username"/>
             <p:inputText id="username" value="#{loginBean.username}" required="true"/>
 
@@ -23,5 +24,6 @@
         <p:commandButton value="Login" action="#{loginBean.login}"/>
     </h:form>
     <a href="resetPassword.xhtml">Forgot Password?</a>
+    </div>
 </h:body>
 </html>
