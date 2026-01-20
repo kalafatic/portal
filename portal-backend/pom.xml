@@ -26,6 +26,22 @@
 		<finalName>portal</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<version>7</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<webModule>
+							<groupId>com.kalafatic.web</groupId>
+							<artifactId>portal-frontend</artifactId>
+							<contextRoot>/portal</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+			<plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.13.0</version>
@@ -53,6 +69,12 @@
 
 
 	<dependencies>
+		<dependency>
+			<groupId>com.kalafatic.web</groupId>
+			<artifactId>portal-frontend</artifactId>
+			<version>2.6.1</version>
+			<type>war</type>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
