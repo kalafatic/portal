@@ -3,6 +3,8 @@ package com.kalafatic.web;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -55,5 +57,27 @@ public class UserBean {
         Locale locale = new Locale(lang);
         ResourceBundle bundle = ResourceBundle.getBundle("com.kalafatic.web.bundles.messages", locale);
         return bundle.getString(key);
+    }
+
+    public static List<Project> getProjectsByUsername(String username) {
+        List<Project> projects = new ArrayList<>();
+        try {
+            InitialContext ctx = new InitialContext();
+            DataSource ds = (DataSource) ctx.lookup("java:jboss/datasources/MySqlDS");
+            try (Connection conn = ds.getConnection();
+                 PreparedStatement ps = conn.prepareStatement("SELECT name, url FROM projects WHERE username = ?")) {
+                ps.setString(1, username);
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        String name = rs.getString("name");
+                        String url = rs.getString("url");
+                        projects.add(new Project(name, url));
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return projects;
     }
 }

@@ -1,12 +1,43 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:panelGroup rendered="#{sessionScope.username != null}">
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <h:outputLink value="#{sidebarBean.oldPortalUrl}" target="_blank">Old Portal</h:outputLink>
+                </li>
+                <li>
+                    <span>Projects</span>
+                    <ul>
+                        <c:forEach items="#{sidebarBean.projects}" var="project">
+                            <li>
+                                <h:outputLink value="#{project.url}" target="_blank">#{project.name}</h:outputLink>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </h:panelGroup>
+
     <div class="menu">
         <ul class="nav-links">
             <li><a href="index.xhtml">Home</a></li>
             <li><a href="resetPassword.xhtml">Reset Password</a></li>
         </ul>
         <div class="login-container">
-            <a href="login.xhtml" class="btn">Login</a>
+            <h:panelGroup rendered="#{sessionScope.username == null}">
+                <a href="login.xhtml" class="btn">Login</a>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{sessionScope.username != null}">
+                <h:form>
+                    <p:commandButton value="Logout" action="#{loginBean.logout}"/>
+                </h:form>
+            </h:panelGroup>
         </div>
     </div>
 </ui:composition>
