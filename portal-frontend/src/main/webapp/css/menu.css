@@ -3,13 +3,14 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #1a1a1a;
+    background-color: #357EC7;
     padding: 10px 20px;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
+    border-bottom: 2px solid #000;
 }
 
 .menu ul.nav-links {
@@ -25,15 +26,14 @@
 }
 
 .menu a {
-    color: #e0e0e0;
+    color: #ffffff;
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: color 0.3s;
 }
 
 .menu a:hover {
-    color: #ffffff;
+    color: #f0f0f0;
 }

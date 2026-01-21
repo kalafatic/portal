@@ -1,7 +1,7 @@
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #000000;
     margin: 0;
     padding: 20px;
     padding-top: 60px;
@@ -9,7 +9,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #ffffff;
+    color: #000000;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -18,9 +18,8 @@ table {
     border-collapse: collapse;
     margin: 30px auto;
     width: 80%;
-    background-color: #2c2c2c;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    border: 1px solid #444;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
 }
 
 th, td {
@@ -42,28 +41,25 @@ tr:nth-child(even) {
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #5a5a5a;
+    padding: 8px 15px;
+    background-color: #357EC7;
     color: white;
     text-decoration: none;
-    border: 2px solid #777;
+    border: 1px solid #000;
     border-radius: 0;
     font-weight: bold;
     text-transform: uppercase;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .btn:hover {
-    background-color: #777;
-    color: #1a1a1a;
-    border-color: #999;
+    background-color: #4A90E2;
 }
 
 .login-form-container {
     width: 400px;
     margin: 50px auto;
     padding: 30px;
-    background-color: #2c2c2c;
-    border: 1px solid #444;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-color: #e0e0e0;
+    border: 1px solid #cccccc;
+    box-shadow: none;
 }
