@@ -4,16 +4,42 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
 
-    <ui:define name="title">Home - Portal</ui:define>
+    <ui:define name="title">Dashboard - Portal</ui:define>
 
     <ui:define name="content">
-        <h2>Welcome to the Portal</h2>
         <h:panelGroup rendered="#{sessionScope.username != null}">
-            <p>Hello, <strong>#{sessionScope.username}</strong>! You are successfully logged in.</p>
-            <p>Use the sidebar to navigate through your projects.</p>
+            <div style="margin-bottom: 20px;">
+                <h2>Welcome, #{sessionScope.username}</h2>
+                <p>Manage your projects and access resources from your professional dashboard.</p>
+            </div>
+
+            <p:panel header="Your Projects" style="margin-bottom: 20px;">
+                <p:dataTable var="project" value="#{sidebarBean.projects}" emptyMessage="No projects assigned to your account.">
+                    <p:column headerText="Project Name">
+                        <h:outputText value="#{project.name}" style="font-weight: bold;"/>
+                    </p:column>
+                    <p:column headerText="URL">
+                        <h:outputLink value="#{project.url}" target="_blank">#{project.url}</h:outputLink>
+                    </p:column>
+                    <p:column headerText="Action" style="width: 100px; text-align: center;">
+                        <h:outputLink value="#{project.url}" target="_blank" styleClass="btn" style="padding: 5px 10px; font-size: 11px;">Open</h:outputLink>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+
+            <p:panel header="System Information">
+                <p>Welcome to the modernized portal. This interface is designed for efficiency and professional use, following a simplex aesthetic.</p>
+            </p:panel>
         </h:panelGroup>
+
         <h:panelGroup rendered="#{sessionScope.username == null}">
-            <p>Welcome, guest! Please <h:link outcome="login">login</h:link> to access your projects.</p>
+            <div style="text-align: center; padding: 50px;">
+                <h1>Professional Portal Access</h1>
+                <p>Please log in to access your secure project dashboard.</p>
+                <div style="margin-top: 30px;">
+                    <h:link outcome="login" value="Access Login" styleClass="btn" />
+                </div>
+            </div>
         </h:panelGroup>
     </ui:define>
 
