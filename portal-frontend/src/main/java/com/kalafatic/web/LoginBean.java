@@ -34,7 +34,7 @@ public class LoginBean {
         if (isValid) {
             HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
             request.getSession().setAttribute("username", username);
-            return "welcome?faces-redirect=true";
+            return "index?faces-redirect=true";
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid username or password.", null));
             return null;

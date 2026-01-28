@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title><ui:insert name="title">Portal</ui:insert></title>
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/menu.css"/>
+    <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/sidebar.css"/>
+    <ui:insert name="head"></ui:insert>
+</h:head>
+<h:body styleClass="#{sessionScope.username != null ? 'has-sidebar' : ''}">
+    <ui:include src="/menu.xhtml" />
+
+    <div class="container">
+        <div class="main-content">
+            <ui:insert name="content">
+                <!-- Default content -->
+            </ui:insert>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Portal System - Professional Simplex Design. All rights reserved.</p>
+    </div>
+</h:body>
+</html>

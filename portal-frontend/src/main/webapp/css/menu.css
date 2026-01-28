@@ -4,13 +4,14 @@
     left: 0;
     width: 100%;
     background-color: #357EC7;
-    padding: 10px 20px;
+    padding: 0 20px;
+    height: 60px;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #000000;
 }
 
 .menu ul.nav-links {
@@ -21,19 +22,31 @@
 }
 
 .menu li {
-    display: inline-block;
-    margin: 0 15px;
+    margin-right: 20px;
 }
 
 .menu a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    line-height: 60px;
+    display: block;
+    padding: 0 10px;
 }
 
 .menu a:hover {
-    color: #f0f0f0;
+    background-color: #2a6496;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+}
+
+.login-container .btn {
+    padding: 5px 15px;
+    font-size: 12px;
 }

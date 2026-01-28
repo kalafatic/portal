@@ -1,19 +1,20 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-    <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="css/menu.css"/>
-    <link rel="stylesheet" type="text/css" href="css/sidebar.css"/>
-</h:head>
-<h:body>
-    <ui:include src="menu.xhtml" />
-    <div class="main-content">
-        <h2>Welcome, #{sessionScope.username}!</h2>
-        <p>You have successfully logged in.</p>
-    </div>
-</h:body>
-</html>
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Home - Portal</ui:define>
+
+    <ui:define name="content">
+        <h2>Welcome to the Portal</h2>
+        <h:panelGroup rendered="#{sessionScope.username != null}">
+            <p>Hello, <strong>#{sessionScope.username}</strong>! You are successfully logged in.</p>
+            <p>Use the sidebar to navigate through your projects.</p>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{sessionScope.username == null}">
+            <p>Welcome, guest! Please <h:link outcome="login">login</h:link> to access your projects.</p>
+        </h:panelGroup>
+    </ui:define>
+
+</ui:composition>
