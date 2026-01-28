@@ -12,10 +12,17 @@
 }
 
 .sidebar h3 {
-    font-size: 16px;
-    margin-top: 0;
-    border-bottom: 1px solid #cccccc;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #357EC7;
     padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar h3:first-child {
+    margin-top: 0;
 }
 
 .sidebar ul {
@@ -32,9 +39,23 @@
     color: #333333;
     text-decoration: none;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 13px;
+}
+
+.sidebar a i {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #666;
 }
 
 .sidebar a:hover {
+    color: #357EC7;
+}
+
+.sidebar a:hover i {
     color: #357EC7;
 }
 

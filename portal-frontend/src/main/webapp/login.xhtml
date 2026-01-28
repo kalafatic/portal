@@ -7,21 +7,24 @@
     <ui:define name="title">Login - Portal</ui:define>
 
     <ui:define name="content">
-        <div style="display: flex; justify-content: center; align-items: center; padding: 40px 0;">
-            <p:panel header="Authentication Required" style="width: 450px;">
+        <div style="display: flex; justify-content: center; align-items: center; padding: 60px 0;">
+            <p:panel style="width: 450px; border: 2px solid #000 !important;">
+                <f:facet name="header">
+                    <i class="pi pi-lock" style="margin-right: 10px;"></i>SECURE AUTHENTICATION
+                </f:facet>
                 <h:form id="loginForm">
                     <p:focus for="username" />
                     <p:messages id="messages" showDetail="true" closable="true">
                         <p:autoUpdate />
                     </p:messages>
 
-                    <h:panelGrid columns="2" cellpadding="7" style="width: 100%; margin-bottom: 10px;">
-                        <p:outputLabel for="username" value="Username:"/>
-                        <p:inputText id="username" value="#{loginBean.username}" required="true" style="width: 100%;"/>
+                    <div style="padding: 10px;">
+                        <p:outputLabel for="username" value="USERNAME" style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 12px; color: #666;"/>
+                        <p:inputText id="username" value="#{loginBean.username}" required="true" style="width: 100%; margin-bottom: 15px;"/>
 
-                        <p:outputLabel for="password" value="Password:"/>
-                        <p:password id="password" value="#{loginBean.password}" required="true" style="width: 100%;"/>
-                    </h:panelGrid>
+                        <p:outputLabel for="password" value="PASSWORD" style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 12px; color: #666;"/>
+                        <p:password id="password" value="#{loginBean.password}" required="true" style="width: 100%; margin-bottom: 10px;"/>
+                    </div>
 
                     <div style="text-align: right; margin-top: 15px;">
                         <p:commandButton value="Login" action="#{loginBean.login}" styleClass="btn" update="loginForm"/>

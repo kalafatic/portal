@@ -41,6 +41,12 @@
     background-color: #2a6496;
 }
 
+.menu a.nav-active {
+    background-color: #1a4d7d;
+    border-bottom: 4px solid #ffffff;
+    height: 56px; /* Adjust for border to keep 60px total height */
+}
+
 .login-container {
     display: flex;
     align-items: center;
