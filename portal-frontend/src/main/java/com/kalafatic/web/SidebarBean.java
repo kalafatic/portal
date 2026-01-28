@@ -3,17 +3,21 @@ package com.kalafatic.web;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class SidebarBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private List<Project> projects;
+
+    @Inject
+    private UserBean userBean;
 
     public List<Project> getProjects() {
         if (projects == null) {
@@ -21,7 +25,7 @@ public class SidebarBean implements Serializable {
             if (session != null) {
                 String username = (String) session.getAttribute("username");
                 if (username != null) {
-                    projects = UserBean.getProjectsByUsername(username);
+                    projects = userBean.getProjectsByUsername(username);
                 }
             }
         }
