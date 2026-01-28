@@ -20,7 +20,7 @@ public class SidebarBean implements Serializable {
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
             if (session != null) {
                 String username = (String) session.getAttribute("username");
-                if (username != null && "jules".equalsIgnoreCase(username)) {
+                if (username != null) {
                     projects = UserBean.getProjectsByUsername(username);
                 }
             }

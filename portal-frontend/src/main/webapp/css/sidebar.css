@@ -1,13 +1,44 @@
 .sidebar {
-    width: 200px;
+    width: 240px;
     position: fixed;
     left: 0;
-    top: 0;
-    height: 100%;
-    background-color: #f8f9fa;
+    top: 62px; /* Adjusted for menu border */
+    height: calc(100% - 62px);
+    background-color: #e0e0e0;
+    border-right: 2px solid #cccccc;
     padding: 20px;
+    box-sizing: border-box;
+    z-index: 900;
 }
 
-.main-content {
-    margin-left: 220px;
+.sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 5px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidebar a:hover {
+    color: #357EC7;
+}
+
+/* Adjust main content when sidebar is present */
+.has-sidebar .container {
+    margin-left: 240px;
 }

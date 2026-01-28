@@ -6,36 +6,42 @@
 
     <h:panelGroup rendered="#{sessionScope.username != null}">
         <div class="sidebar">
+            <h3>Navigation</h3>
             <ul>
                 <li>
                     <h:outputLink value="#{sidebarBean.oldPortalUrl}" target="_blank">Old Portal</h:outputLink>
                 </li>
-                <li>
-                    <span>Projects</span>
-                    <ul>
-                        <c:forEach items="#{sidebarBean.projects}" var="project">
-                            <li>
-                                <h:outputLink value="#{project.url}" target="_blank">#{project.name}</h:outputLink>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </li>
+            </ul>
+            <h3>Projects</h3>
+            <ul>
+                <c:forEach items="#{sidebarBean.projects}" var="project">
+                    <li>
+                        <h:outputLink value="#{project.url}" target="_blank">#{project.name}</h:outputLink>
+                    </li>
+                </c:forEach>
+                <h:panelGroup rendered="#{empty sidebarBean.projects}">
+                    <li style="font-style: italic; color: #666;">No projects found.</li>
+                </h:panelGroup>
             </ul>
         </div>
     </h:panelGroup>
 
     <div class="menu">
-        <ul class="nav-links">
-            <li><a href="index.xhtml">Home</a></li>
-            <li><a href="resetPassword.xhtml">Reset Password</a></li>
-        </ul>
+        <div style="display: flex; align-items: center;">
+            <div style="font-size: 20px; font-weight: bold; color: white; margin-right: 30px; letter-spacing: 2px;">PORTAL</div>
+            <ul class="nav-links">
+                <li><h:link outcome="index" value="Home" /></li>
+                <li><h:link outcome="resetPassword" value="Security" /></li>
+            </ul>
+        </div>
         <div class="login-container">
             <h:panelGroup rendered="#{sessionScope.username == null}">
-                <a href="login.xhtml" class="btn">Login</a>
+                <h:link outcome="login" value="Login" styleClass="btn" />
             </h:panelGroup>
-            <h:panelGroup rendered="#{sessionScope.username != null}">
+            <h:panelGroup rendered="#{sessionScope.username != null}" style="display: flex; align-items: center;">
+                <span style="color: white; margin-right: 15px; font-size: 14px;">User: <strong>#{sessionScope.username}</strong></span>
                 <h:form>
-                    <p:commandButton value="Logout" action="#{loginBean.logout}"/>
+                    <h:commandButton value="Logout" action="#{loginBean.logout}" style="background: none; border: 1px solid white; color: white; padding: 5px 10px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 12px;"/>
                 </h:form>
             </h:panelGroup>
         </div>
