@@ -1,17 +1,21 @@
 package com.kalafatic.web;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class LoginBean {
 
     private String username;
     private String password;
+
+    @Inject
+    private UserBean userBean;
 
     public String getUsername() {
         return username;
@@ -30,7 +34,7 @@ public class LoginBean {
     }
 
     public String login() {
-        boolean isValid = UserBean.validate(username, password);
+        boolean isValid = userBean.validate(username, password);
         if (isValid) {
             HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
             request.getSession().setAttribute("username", username);

@@ -27,56 +27,97 @@ h1 {
     border: 1px solid #cccccc;
 }
 
-table {
-    border-collapse: collapse;
-    margin: 20px 0;
-    width: 100%;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
+/* PrimeFaces Global Overrides - Simplex/XP Style */
+.ui-widget {
+    font-family: Arial, sans-serif !important;
+    font-size: 14px !important;
 }
 
-th, td {
-    padding: 12px 15px;
-    border: 1px solid #cccccc;
-    text-align: left;
-}
-
-th {
-    background-color: #357EC7;
-    color: #ffffff;
-    font-weight: bold;
+.ui-widget-header {
+    background: #357EC7 !important;
+    color: #ffffff !important;
     text-transform: uppercase;
+    font-weight: bold !important;
+    border-radius: 0 !important;
+    border: 1px solid #000000 !important;
 }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+.ui-widget-content {
+    border-radius: 0 !important;
+    border: 1px solid #cccccc !important;
 }
 
-.btn {
+/* Panel Styling */
+.ui-panel {
+    padding: 0 !important;
+    border: none !important;
+}
+
+.ui-panel-titlebar {
+    padding: 8px 15px !important;
+}
+
+.ui-panel-content {
+    padding: 15px !important;
+}
+
+/* DataTable Styling */
+.ui-datatable thead th {
+    background: #357EC7 !important;
+    color: #ffffff !important;
+    border: 1px solid #000000 !important;
+    text-transform: uppercase;
+    padding: 10px !important;
+}
+
+.ui-datatable tbody td {
+    border: 1px solid #cccccc !important;
+    padding: 8px !important;
+}
+
+.ui-datatable tr.ui-widget-content:nth-child(even) {
+    background-color: #f9f9f9 !important;
+}
+
+/* Form Elements */
+.ui-inputfield {
+    border-radius: 0 !important;
+    border: 1px solid #999999 !important;
+    padding: 5px !important;
+    box-shadow: none !important;
+}
+
+.ui-inputfield:focus {
+    border-color: #357EC7 !important;
+    box-shadow: 0 0 2px #357EC7 !important;
+}
+
+/* Messages */
+.ui-messages-info, .ui-messages-warn, .ui-messages-error, .ui-messages-fatal {
+    border-radius: 0 !important;
+    margin: 10px 0 !important;
+}
+
+/* Buttons */
+.btn, .ui-button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #357EC7;
-    color: #ffffff;
+    padding: 8px 20px !important;
+    background: #357EC7 !important;
+    color: #ffffff !important;
     text-decoration: none;
-    border: 1px solid #000000;
-    border-radius: 0;
-    font-weight: bold;
+    border: 1px solid #000000 !important;
+    border-radius: 0 !important;
+    font-weight: bold !important;
     text-transform: uppercase;
     cursor: pointer;
+    box-shadow: none !important;
 }
 
-.btn:hover {
-    background-color: #2a6496;
+.btn:hover, .ui-button:hover {
+    background: #2a6496 !important;
 }
 
-.login-form-container {
-    width: 400px;
-    margin: 50px auto;
-    padding: 40px;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-}
-
+/* Footer */
 .footer {
     background-color: #333333;
     color: #ffffff;
