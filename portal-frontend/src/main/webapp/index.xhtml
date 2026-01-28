@@ -27,9 +27,30 @@
                 </p:dataTable>
             </p:panel>
 
-            <p:panel header="System Information">
-                <p>Welcome to the modernized portal. This interface is designed for efficiency and professional use, following a simplex aesthetic.</p>
-            </p:panel>
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-8">
+                    <p:panel header="System Status" style="margin-bottom: 20px;">
+                        <p:panelGrid columns="2" layout="grid" styleClass="dev-grid">
+                            <h:outputText value="Platform Version:" style="font-weight: bold;"/>
+                            <h:outputText value="#{systemBean.appVersion}"/>
+
+                            <h:outputText value="Server Engine:" style="font-weight: bold;"/>
+                            <h:outputText value="#{systemBean.serverInfo}"/>
+
+                            <h:outputText value="Current Server Time:" style="font-weight: bold;"/>
+                            <h:outputText value="#{systemBean.serverTime}"/>
+                        </p:panelGrid>
+                        <div style="margin-top: 15px; text-align: right;">
+                            <h:link outcome="develop" value="View Detailed Console" style="font-size: 11px; color: #357EC7; font-weight: bold; text-decoration: none; text-transform: uppercase;"/>
+                        </div>
+                    </p:panel>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <p:panel header="About Portal">
+                        <p>Welcome to the professional Portal interface. This environment is optimized for development workflows and system management, following a strict simplex design aesthetic.</p>
+                    </p:panel>
+                </div>
+            </div>
         </h:panelGroup>
 
         <h:panelGroup rendered="#{sessionScope.username == null}">

@@ -1,0 +1,103 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Developer Console - Portal</ui:define>
+
+    <ui:define name="content">
+        <h:panelGroup rendered="#{sessionScope.username != null}">
+            <div style="margin-bottom: 20px;">
+                <h2>Developer Console</h2>
+                <p>Platform internals and development resources for the Portal environment.</p>
+            </div>
+
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6">
+                    <p:panel header="System Metrics" style="margin-bottom: 20px;">
+                        <p:panelGrid columns="2" layout="grid" styleClass="dev-grid">
+                            <h:outputText value="Java Version:" style="font-weight: bold;"/>
+                            <h:outputText value="#{systemBean.javaVersion}"/>
+
+                            <h:outputText value="JVM Vendor:" style="font-weight: bold;"/>
+                            <h:outputText value="#{systemBean.jvmVendor}"/>
+
+                            <h:outputText value="OS Name:" style="font-weight: bold;"/>
+                            <h:outputText value="#{systemBean.osName}"/>
+
+                            <h:outputText value="Architecture:" style="font-weight: bold;"/>
+                            <h:outputText value="#{systemBean.architecture}"/>
+
+                            <h:outputText value="Server Info:" style="font-weight: bold;"/>
+                            <h:outputText value="#{systemBean.serverInfo}"/>
+
+                            <h:outputText value="Server Time:" style="font-weight: bold;"/>
+                            <h:outputText value="#{systemBean.serverTime}"/>
+                        </p:panelGrid>
+                    </p:panel>
+                </div>
+
+                <div class="ui-g-12 ui-md-6">
+                    <p:panel header="Application Metadata" style="margin-bottom: 20px;">
+                        <p:panelGrid columns="2" layout="grid" styleClass="dev-grid">
+                            <h:outputText value="Portal Version:" style="font-weight: bold;"/>
+                            <h:panelGroup>
+                                <span class="status-badge">#{systemBean.appVersion}</span>
+                            </h:panelGroup>
+
+                            <h:outputText value="Environment:" style="font-weight: bold;"/>
+                            <h:outputText value="Production / Staging"/>
+
+                            <h:outputText value="Build Timestamp:" style="font-weight: bold;"/>
+                            <h:outputText value="2026-01-28"/>
+                        </p:panelGrid>
+                    </p:panel>
+                </div>
+            </div>
+
+            <p:panel header="Core Dependencies" style="margin-bottom: 20px;">
+                <p:dataTable var="dep" value="#{developBean.dependencies}">
+                    <p:column headerText="Dependency">
+                        <h:outputText value="#{dep.name}" style="font-weight: bold;"/>
+                    </p:column>
+                    <p:column headerText="Version" style="width: 150px;">
+                        <h:outputText value="#{dep.version}"/>
+                    </p:column>
+                    <p:column headerText="Purpose">
+                        <h:outputText value="#{dep.purpose}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+
+            <p:panel header="Developer Resources">
+                <p:dataList value="#{developBean.resources}" var="res" type="unordered" itemType="none">
+                    <f:facet name="header">Quick Links</f:facet>
+                    <h:outputLink value="#{res.url}" target="_blank" style="color: #357EC7; font-weight: bold; text-decoration: none;">
+                        <i class="pi pi-external-link" style="margin-right: 5px;"></i>#{res.name}
+                    </h:outputLink>
+                </p:dataList>
+            </p:panel>
+
+            <div style="margin-top: 20px;">
+                <h3>Platform Architecture</h3>
+                <div class="dev-code-block">
+                    [WEB] -> [JSF/PrimeFaces] -> [CDI Beans] -> [JNDI DataSource] -> [MySQL]
+                    [API] -> [RESTEasy JAX-RS] -> [EJB Services] -> [MySQL]
+                </div>
+            </div>
+        </h:panelGroup>
+
+        <h:panelGroup rendered="#{sessionScope.username == null}">
+            <div style="text-align: center; padding: 50px;">
+                <h1>Access Denied</h1>
+                <p>Developer console is restricted to authenticated personnel.</p>
+                <div style="margin-top: 30px;">
+                    <h:link outcome="login" value="Return to Login" styleClass="btn" />
+                </div>
+            </div>
+        </h:panelGroup>
+    </ui:define>
+
+</ui:composition>
