@@ -31,6 +31,7 @@
             <div style="font-size: 20px; font-weight: bold; color: white; margin-right: 30px; letter-spacing: 2px;">PORTAL</div>
             <ul class="nav-links">
                 <li><h:link outcome="index" value="Home" /></li>
+                <li><h:link outcome="develop" value="Develop" rendered="#{sessionScope.username != null}" /></li>
                 <li><h:link outcome="resetPassword" value="Security" /></li>
             </ul>
         </div>
