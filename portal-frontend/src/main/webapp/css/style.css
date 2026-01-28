@@ -17,14 +17,17 @@ h1 {
 }
 
 .container {
-    padding: 80px 20px 20px 20px; /* Top padding to account for fixed menu */
-    min-height: calc(100vh - 120px);
+    padding: 100px 40px 40px 40px; /* Increased padding for more professional breath */
+    min-height: calc(100vh - 140px);
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .main-content {
     background-color: #ffffff;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #cccccc;
+    border-top: 4px solid #357EC7; /* Signature professional accent */
 }
 
 /* PrimeFaces Global Overrides - Simplex/XP Style */

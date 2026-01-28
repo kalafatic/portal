@@ -6,17 +6,21 @@
 
     <h:panelGroup rendered="#{sessionScope.username != null}">
         <div class="sidebar">
-            <h3>Navigation</h3>
+            <h3><i class="pi pi-compass" style="margin-right: 8px; font-size: 14px;"></i>Navigation</h3>
             <ul>
                 <li>
-                    <h:outputLink value="#{sidebarBean.oldPortalUrl}" target="_blank">Old Portal</h:outputLink>
+                    <h:outputLink value="#{sidebarBean.oldPortalUrl}" target="_blank">
+                        <i class="pi pi-external-link"></i>Old Portal
+                    </h:outputLink>
                 </li>
             </ul>
-            <h3>Projects</h3>
+            <h3><i class="pi pi-briefcase" style="margin-right: 8px; font-size: 14px;"></i>Projects</h3>
             <ul>
                 <c:forEach items="#{sidebarBean.projects}" var="project">
                     <li>
-                        <h:outputLink value="#{project.url}" target="_blank">#{project.name}</h:outputLink>
+                        <h:outputLink value="#{project.url}" target="_blank">
+                            <i class="pi pi-folder"></i>#{project.name}
+                        </h:outputLink>
                     </li>
                 </c:forEach>
                 <h:panelGroup rendered="#{empty sidebarBean.projects}">
@@ -30,9 +34,9 @@
         <div style="display: flex; align-items: center;">
             <div style="font-size: 20px; font-weight: bold; color: white; margin-right: 30px; letter-spacing: 2px;">PORTAL</div>
             <ul class="nav-links">
-                <li><h:link outcome="index" value="Home" /></li>
-                <li><h:link outcome="develop" value="Develop" rendered="#{sessionScope.username != null}" /></li>
-                <li><h:link outcome="resetPassword" value="Security" /></li>
+                <li><h:link outcome="index" value="Home" styleClass="#{view.viewId.contains('index') ? 'nav-active' : ''}" /></li>
+                <li><h:link outcome="develop" value="Develop" rendered="#{sessionScope.username != null}" styleClass="#{view.viewId.contains('develop') ? 'nav-active' : ''}" /></li>
+                <li><h:link outcome="resetPassword" value="Security" styleClass="#{view.viewId.contains('resetPassword') ? 'nav-active' : ''}" /></li>
             </ul>
         </div>
         <div class="login-container">

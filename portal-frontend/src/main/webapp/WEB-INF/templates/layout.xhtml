@@ -15,6 +15,11 @@
     <ui:include src="/menu.xhtml" />
 
     <div class="container">
+        <h:panelGroup rendered="#{sessionScope.username != null}" layout="block" style="margin-bottom: 15px; font-size: 12px; color: #666; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+            <i class="pi pi-home" style="font-size: 10px; margin-right: 5px;"></i>
+            PORTAL / <ui:insert name="title">DASHBOARD</ui:insert>
+        </h:panelGroup>
+
         <div class="main-content">
             <ui:insert name="content">
                 <!-- Default content -->
