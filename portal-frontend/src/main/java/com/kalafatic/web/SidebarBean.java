@@ -18,6 +18,7 @@ public class SidebarBean implements Serializable {
     private List<Project> projects;
     private String newProjectName;
     private String newProjectUrl;
+    private String searchQuery;
 
     @Inject
     private UserBean userBean;
@@ -25,6 +26,11 @@ public class SidebarBean implements Serializable {
     public List<Project> getProjects() {
         if (projects == null) {
             refreshProjects();
+        }
+        if (searchQuery != null && !searchQuery.trim().isEmpty()) {
+            return projects.stream()
+                    .filter(p -> p.getName().toLowerCase().contains(searchQuery.toLowerCase().trim()))
+                    .collect(java.util.stream.Collectors.toList());
         }
         return projects;
     }
@@ -87,4 +93,7 @@ public class SidebarBean implements Serializable {
 
     public String getNewProjectUrl() { return newProjectUrl; }
     public void setNewProjectUrl(String newProjectUrl) { this.newProjectUrl = newProjectUrl; }
+
+    public String getSearchQuery() { return searchQuery; }
+    public void setSearchQuery(String searchQuery) { this.searchQuery = searchQuery; }
 }

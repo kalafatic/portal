@@ -9,51 +9,60 @@
 
     <ui:define name="content">
         <h:panelGroup rendered="#{sessionScope.username != null}">
-            <div style="margin-bottom: 20px;">
-                <h2>My Profile</h2>
-                <p>Manage your account information and professional identity.</p>
+            <div class="profile-header">
+                <h1 class="profile-title">User Profile</h1>
+                <p class="profile-subtitle">Manage your account information and platform preferences.</p>
             </div>
 
             <div class="ui-g">
-                <div class="ui-g-12 ui-md-6">
-                    <p:panel header="Account Information" style="margin-bottom: 20px;">
+                <div class="ui-g-12 ui-md-8 ui-lg-6">
+                    <div class="card">
+                        <h2 class="card-title">Account Details</h2>
                         <h:form id="profileForm">
-                            <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank dev-grid">
-                                <h:outputText value="Username:" style="font-weight: bold;"/>
-                                <h:outputText value="#{profileBean.currentUser.username}" style="font-size: 16px;"/>
+                            <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank">
+                                <p:outputLabel for="username" value="Username" styleClass="form-label"/>
+                                <p:inputText id="username" value="#{profileBean.currentUser.username}" disabled="true" style="width: 100%; background: #f5f5f5 !important; border-color: #dddddd !important; color: #888888 !important;" />
 
-                                <p:outputLabel for="name" value="Display Name:" style="font-weight: bold; margin-top: 10px;"/>
-                                <p:inputText id="name" value="#{profileBean.currentUser.name}" required="true" style="width: 100%;" />
+                                <h:panelGroup styleClass="form-field-group">
+                                    <p:outputLabel for="name" value="Display Name" styleClass="form-label"/>
+                                    <p:inputText id="name" value="#{profileBean.currentUser.name}" required="true" style="width: 100%;" />
+                                </h:panelGroup>
 
-                                <p:outputLabel for="email" value="Email Address:" style="font-weight: bold; margin-top: 10px;"/>
-                                <p:inputText id="email" value="#{profileBean.currentUser.email}" style="width: 100%;" />
+                                <h:panelGroup styleClass="form-field-group">
+                                    <p:outputLabel for="email" value="Email Address" styleClass="form-label"/>
+                                    <p:inputText id="email" value="#{profileBean.currentUser.email}" style="width: 100%;" />
+                                </h:panelGroup>
                             </p:panelGrid>
 
-                            <div style="margin-top: 20px;">
-                                <p:commandButton value="Update Profile" action="#{profileBean.updateProfile}"
-                                                 update=":growl @form" icon="pi pi-save" />
+                            <div style="margin-top: 30px; display: flex; justify-content: flex-end; gap: 10px;">
+                                <p:commandButton value="Cancel" type="button" styleClass="ui-button-secondary secondary-btn" />
+                                <p:commandButton value="Save Changes" action="#{profileBean.updateProfile}" update=":growl @form" icon="pi pi-save" />
                             </div>
                         </h:form>
-                    </p:panel>
+                    </div>
                 </div>
 
-                <div class="ui-g-12 ui-md-6">
-                    <p:panel header="Security Summary" style="margin-bottom: 20px;">
-                        <p>Your account is protected with BCrypt password hashing.</p>
-                        <div style="margin-top: 15px;">
-                            <h:link outcome="resetPassword" value="Change Password" styleClass="btn" style="font-size: 12px;"/>
+                <div class="ui-g-12 ui-md-4 ui-lg-6">
+                    <div class="card security-card">
+                        <h2 style="margin-top: 0; font-size: 18px; text-transform: none; color: #000000; margin-bottom: 15px;">Profile Security</h2>
+                        <p style="font-size: 14px; color: #444444; line-height: 1.6;">Your account security is important. We recommend updating your password periodically and ensuring your email is verified.</p>
+                        <div style="margin-top: 20px;">
+                            <h:link outcome="resetPassword" styleClass="project-link">
+                                <i class="pi pi-lock" style="margin-right: 5px;"></i> MANAGE SECURITY SETTINGS
+                            </h:link>
                         </div>
-                    </p:panel>
+                    </div>
 
-                    <p:panel header="Account Details">
+                    <div class="card">
+                        <h2 class="card-title">Account Summary</h2>
                         <p:panelGrid columns="2" layout="grid" styleClass="dev-grid">
-                            <h:outputText value="User ID:" style="font-weight: bold;"/>
-                            <h:outputText value="#{profileBean.currentUser.id}"/>
+                            <h:outputText value="User ID:" styleClass="metric-label"/>
+                            <h:outputText value="#{profileBean.currentUser.id}" styleClass="metric-value"/>
 
-                            <h:outputText value="Role:" style="font-weight: bold;"/>
-                            <h:outputText value="Developer / Administrator"/>
+                            <h:outputText value="Role:" styleClass="metric-label"/>
+                            <h:outputText value="Developer / Administrator" styleClass="metric-value"/>
                         </p:panelGrid>
-                    </p:panel>
+                    </div>
                 </div>
             </div>
         </h:panelGroup>
