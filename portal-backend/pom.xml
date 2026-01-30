@@ -49,6 +49,15 @@
                 <source>1.8</source> <!-- Adjust to your Java version -->
                 <target>1.8</target>
             </configuration>
+            <executions>
+                <execution>
+                    <id>default-testCompile</id>
+                    <phase>test-compile</phase>
+                    <goals>
+                        <goal>testCompile</goal>
+                    </goals>
+                </execution>
+            </executions>
         </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -63,6 +72,29 @@
             <groupId>org.wildfly.plugins</groupId>
             <artifactId>wildfly-maven-plugin</artifactId>
             <version>4.2.0.Final</version>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.2.5</version>
+            <executions>
+                <execution>
+                    <id>test</id>
+                    <phase>test</phase>
+                    <goals>
+                        <goal>test</goal>
+                    </goals>
+                </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>com.kalafatic.web</groupId>
+            <artifactId>portal-server-plugin</artifactId>
+            <version>2.6.1</version>
+            <configuration>
+                <serverType>JBOSS</serverType>
+                <deployPath>${jboss.deploy.path.backend}</deployPath>
+            </configuration>
           </plugin>
 		</plugins>
 	</build>
@@ -128,6 +160,12 @@
 			<groupId>com.kalafatic.web</groupId>
 			<artifactId>portal-common</artifactId>
 			<version>2.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.kalafatic.web</groupId>
+			<artifactId>portal-server-plugin</artifactId>
+			<version>2.6.1</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mindrot</groupId>

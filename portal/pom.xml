@@ -24,6 +24,7 @@
    	<module>../portal-backend</module>
    	<module>../portal-frontend</module>
     <module>../portal-common</module>
+    <module>../portal-server-plugin</module>
   </modules>
 
   <dependencyManagement>
