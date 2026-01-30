@@ -9,57 +9,99 @@
 
     <ui:define name="content">
         <h:panelGroup rendered="#{sessionScope.username != null}">
-            <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <h2>Welcome, #{sessionScope.username}</h2>
-                    <p>Manage your projects and access resources from your professional dashboard.</p>
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h1 class="hero-title">Portal Management Console</h1>
+                <p class="hero-subtitle">Unified environment for project lifecycle management, security monitoring, and developer resources.</p>
+                <div style="margin-top: 25px;">
+                    <p:commandButton value="Quick Start Guide" icon="pi pi-external-link" style="margin-right: 15px; padding: 10px 25px !important; font-size: 14px !important;" />
+                    <p:commandButton value="Platform Status" icon="pi pi-server" type="button" styleClass="ui-button-secondary" style="padding: 10px 25px !important; background: #ffffff !important; color: #005fb8 !important; border-color: #005fb8 !important; font-size: 14px !important;" />
                 </div>
-                <p:commandButton value="Add New Project" icon="pi pi-plus" onclick="PF('addProjectDialog').show();" styleClass="ui-button-primary" />
             </div>
 
-            <p:panel header="Your Projects" style="margin-bottom: 20px;">
-                <h:form id="projectForm">
-                    <p:dataTable id="projectsTable" var="project" value="#{sidebarBean.projects}" emptyMessage="No projects assigned to your account.">
-                        <p:column headerText="Project Name">
-                            <h:outputText value="#{project.name}" style="font-weight: bold;"/>
-                        </p:column>
-                        <p:column headerText="URL">
-                            <h:outputLink value="#{project.url}" target="_blank">#{project.url}</h:outputLink>
-                        </p:column>
-                        <p:column headerText="Actions" style="width: 150px; text-align: center;">
-                            <h:outputLink value="#{project.url}" target="_blank" styleClass="btn" style="padding: 5px 10px; font-size: 11px; margin-right: 5px;">Open</h:outputLink>
-                            <p:commandButton icon="pi pi-trash" action="#{sidebarBean.deleteProject(project.name)}"
-                                             update=":projectForm:projectsTable :growl"
-                                             styleClass="ui-button-danger" style="padding: 5px; height: 26px; width: 26px;">
-                                <p:confirm header="Confirmation" message="Are you sure you want to delete this project?" icon="pi pi-exclamation-triangle" />
-                            </p:commandButton>
-                        </p:column>
-                    </p:dataTable>
+            <!-- Project Section Header with Search -->
+            <div class="project-grid-header">
+                <div>
+                    <h2 style="margin: 0; text-transform: none; font-size: 24px; color: #000000;">Active Projects</h2>
+                    <p style="color: #666666; margin: 5px 0 0 0;">Manage and monitor your project instances.</p>
+                </div>
+                <h:form id="searchForm" style="display: flex; gap: 10px; align-items: center;">
+                    <span class="ui-input-icon-left">
+                        <i class="pi pi-search" />
+                        <p:inputText value="#{sidebarBean.searchQuery}" placeholder="Search projects..." style="width: 250px; padding-left: 30px !important;">
+                            <p:ajax event="keyup" update=":projectForm" delay="300" />
+                        </p:inputText>
+                    </span>
+                    <p:commandButton value="Add Project" icon="pi pi-plus" onclick="PF('addProjectDialog').show();" type="button" />
                 </h:form>
-            </p:panel>
+            </div>
 
-            <div class="ui-g">
+            <h:form id="projectForm">
+                <div class="ui-g">
+                    <ui:repeat value="#{sidebarBean.projects}" var="project">
+                        <div class="ui-g-12 ui-md-4 ui-lg-3">
+                            <div class="card project-card">
+                                <div>
+                                    <div class="project-card-header">
+                                        <div class="project-icon-box">
+                                            <i class="pi pi-folder"></i>
+                                        </div>
+                                        <h3 class="project-card-title">#{project.name}</h3>
+                                    </div>
+                                    <p class="project-card-url">#{project.url}</p>
+                                </div>
+                                <div class="project-card-actions">
+                                    <h:outputLink value="#{project.url}" target="_blank" styleClass="project-link">
+                                        OPEN PROJECT <i class="pi pi-arrow-right" style="font-size: 10px; margin-left: 5px;"></i>
+                                    </h:outputLink>
+                                    <p:commandButton icon="pi pi-trash" action="#{sidebarBean.deleteProject(project.name)}"
+                                                     update=":projectForm :growl"
+                                                     styleClass="ui-button-danger" style="background: none !important; color: #ff5252 !important; border: none !important; padding: 0 !important; width: auto !important;">
+                                        <p:confirm header="Confirmation" message="Are you sure you want to delete this project?" icon="pi pi-exclamation-triangle" />
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                    <h:panelGroup rendered="#{empty sidebarBean.projects}">
+                        <div class="ui-g-12">
+                            <div class="card" style="text-align: center; padding: 40px; background: #f9f9f9;">
+                                <i class="pi pi-inbox" style="font-size: 40px; color: #cccccc; margin-bottom: 15px;"></i>
+                                <p style="color: #999999;">No projects assigned to your account.</p>
+                                <p:commandButton value="Create Your First Project" icon="pi pi-plus" onclick="PF('addProjectDialog').show();" style="margin-top: 10px;" />
+                            </div>
+                        </div>
+                    </h:panelGroup>
+                </div>
+            </h:form>
+
+            <div class="ui-g" style="margin-top: 20px;">
                 <div class="ui-g-12 ui-md-8">
-                    <p:panel header="System Status" style="margin-bottom: 20px;">
+                    <div class="card">
+                        <h2 style="margin-top: 0; font-size: 18px; text-transform: none; color: #000000; border-bottom: 1px solid #eeeeee; padding-bottom: 10px; margin-bottom: 15px;">System Status</h2>
                         <p:panelGrid columns="2" layout="grid" styleClass="dev-grid">
-                            <h:outputText value="Platform Version:" style="font-weight: bold;"/>
-                            <h:outputText value="#{systemBean.appVersion}"/>
+                            <h:outputText value="Platform Version:" style="font-weight: 600; color: #555555;"/>
+                            <h:outputText value="#{systemBean.appVersion}" style="color: #000000;"/>
 
-                            <h:outputText value="Server Engine:" style="font-weight: bold;"/>
-                            <h:outputText value="#{systemBean.serverInfo}"/>
+                            <h:outputText value="Server Engine:" style="font-weight: 600; color: #555555;"/>
+                            <h:outputText value="#{systemBean.serverInfo}" style="color: #000000;"/>
 
-                            <h:outputText value="Current Server Time:" style="font-weight: bold;"/>
-                            <h:outputText value="#{systemBean.serverTime}"/>
+                            <h:outputText value="Current Server Time:" style="font-weight: 600; color: #555555;"/>
+                            <h:outputText value="#{systemBean.serverTime}" style="color: #000000;"/>
                         </p:panelGrid>
                         <div style="margin-top: 15px; text-align: right;">
-                            <h:link outcome="develop" value="View Detailed Console" style="font-size: 11px; color: #357EC7; font-weight: bold; text-decoration: none; text-transform: uppercase;"/>
+                            <h:link outcome="develop" value="Open Developer Console" style="font-size: 12px; color: #005fb8; font-weight: 600; text-decoration: none; text-transform: uppercase;"/>
                         </div>
-                    </p:panel>
+                    </div>
                 </div>
                 <div class="ui-g-12 ui-md-4">
-                    <p:panel header="About Portal">
-                        <p>Welcome to the professional Portal interface. This environment is optimized for development workflows and system management, following a strict simplex design aesthetic.</p>
-                    </p:panel>
+                    <div class="card">
+                        <h2 style="margin-top: 0; font-size: 18px; text-transform: none; color: #000000; border-bottom: 1px solid #eeeeee; padding-bottom: 10px; margin-bottom: 15px;">Platform Documentation</h2>
+                        <p style="font-size: 14px; line-height: 1.6; color: #444444;">Explore technical guides and best practices for building enterprise-grade solutions on the Portal platform.</p>
+                        <div style="margin-top: 20px;">
+                            <h:outputLink value="#" style="color: #005fb8; font-weight: 600; font-size: 13px; text-decoration: none;">VIEW DOCUMENTATION <i class="pi pi-chevron-right" style="font-size: 10px;"></i></h:outputLink>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -75,7 +117,7 @@
                     <div style="text-align: right; margin-top: 15px;">
                         <p:commandButton value="Cancel" onclick="PF('addProjectDialog').hide();" type="button" styleClass="ui-button-secondary" style="margin-right: 10px;" />
                         <p:commandButton value="Save Project" action="#{sidebarBean.addProject}"
-                                         update=":projectForm:projectsTable :addProjectForm :growl"
+                                         update=":projectForm :addProjectForm :growl"
                                          oncomplete="if (!args.validationFailed) PF('addProjectDialog').hide();" />
                     </div>
                 </h:form>
