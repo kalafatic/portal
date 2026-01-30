@@ -1,0 +1,72 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">User Profile - Portal</ui:define>
+
+    <ui:define name="content">
+        <h:panelGroup rendered="#{sessionScope.username != null}">
+            <div style="margin-bottom: 20px;">
+                <h2>My Profile</h2>
+                <p>Manage your account information and professional identity.</p>
+            </div>
+
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6">
+                    <p:panel header="Account Information" style="margin-bottom: 20px;">
+                        <h:form id="profileForm">
+                            <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank dev-grid">
+                                <h:outputText value="Username:" style="font-weight: bold;"/>
+                                <h:outputText value="#{profileBean.currentUser.username}" style="font-size: 16px;"/>
+
+                                <p:outputLabel for="name" value="Display Name:" style="font-weight: bold; margin-top: 10px;"/>
+                                <p:inputText id="name" value="#{profileBean.currentUser.name}" required="true" style="width: 100%;" />
+
+                                <p:outputLabel for="email" value="Email Address:" style="font-weight: bold; margin-top: 10px;"/>
+                                <p:inputText id="email" value="#{profileBean.currentUser.email}" style="width: 100%;" />
+                            </p:panelGrid>
+
+                            <div style="margin-top: 20px;">
+                                <p:commandButton value="Update Profile" action="#{profileBean.updateProfile}"
+                                                 update=":growl @form" icon="pi pi-save" />
+                            </div>
+                        </h:form>
+                    </p:panel>
+                </div>
+
+                <div class="ui-g-12 ui-md-6">
+                    <p:panel header="Security Summary" style="margin-bottom: 20px;">
+                        <p>Your account is protected with BCrypt password hashing.</p>
+                        <div style="margin-top: 15px;">
+                            <h:link outcome="resetPassword" value="Change Password" styleClass="btn" style="font-size: 12px;"/>
+                        </div>
+                    </p:panel>
+
+                    <p:panel header="Account Details">
+                        <p:panelGrid columns="2" layout="grid" styleClass="dev-grid">
+                            <h:outputText value="User ID:" style="font-weight: bold;"/>
+                            <h:outputText value="#{profileBean.currentUser.id}"/>
+
+                            <h:outputText value="Role:" style="font-weight: bold;"/>
+                            <h:outputText value="Developer / Administrator"/>
+                        </p:panelGrid>
+                    </p:panel>
+                </div>
+            </div>
+        </h:panelGroup>
+
+        <h:panelGroup rendered="#{sessionScope.username == null}">
+            <div style="text-align: center; padding: 50px;">
+                <h1>Access Denied</h1>
+                <p>Please log in to view your profile.</p>
+                <div style="margin-top: 30px;">
+                    <h:link outcome="login" value="Access Login" styleClass="btn" />
+                </div>
+            </div>
+        </h:panelGroup>
+    </ui:define>
+
+</ui:composition>

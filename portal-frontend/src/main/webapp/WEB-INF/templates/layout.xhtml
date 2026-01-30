@@ -12,6 +12,7 @@
     <ui:insert name="head"></ui:insert>
 </h:head>
 <h:body styleClass="#{sessionScope.username != null ? 'has-sidebar' : ''}">
+    <p:growl id="growl" showDetail="true" sticky="false" life="3000" />
     <ui:include src="/menu.xhtml" />
 
     <div class="container">

@@ -1,6 +1,9 @@
 package com.kalafatic.web;
 
-public class Project {
+import java.io.Serializable;
+
+public class Project implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String name;
     private String url;
 
