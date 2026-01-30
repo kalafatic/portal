@@ -1,23 +1,37 @@
 package com.kalafatic.web.plugins.server;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.maven.plugin.logging.Log;
 import java.io.File;
 import java.io.IOException;
 
 public class ApacheServer implements Server {
+    private int port = 80;
+    private Log log;
+
+    @Override
+    public void setLog(Log log) {
+        this.log = log;
+    }
+
+    private void info(String message) {
+        if (log != null) log.info(message);
+        else System.out.println(message);
+    }
+
     @Override
     public void start() {
-        System.out.println("Starting Apache HTTP Server...");
+        info("Starting Apache HTTP Server on port " + port + "...");
     }
 
     @Override
     public void stop() {
-        System.out.println("Stopping Apache HTTP Server...");
+        info("Stopping Apache HTTP Server...");
     }
 
     @Override
     public void deploy(File artifact, File deployDir) throws IOException {
-        System.out.println("Deploying " + artifact.getName() + " to Apache at " + deployDir.getAbsolutePath());
+        info("Deploying " + artifact.getName() + " to Apache at " + deployDir.getAbsolutePath());
         if (!deployDir.exists()) {
             deployDir.mkdirs();
         }
@@ -28,5 +42,15 @@ public class ApacheServer implements Server {
     @Override
     public String getName() {
         return "Apache HTTP Server";
+    }
+
+    @Override
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    @Override
+    public int getPort() {
+        return port;
     }
 }

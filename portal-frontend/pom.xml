@@ -99,10 +99,20 @@
 				<groupId>com.kalafatic.web</groupId>
 				<artifactId>portal-server-plugin</artifactId>
 				<version>2.6.1</version>
-				<configuration>
-					<serverType>TOMCAT</serverType>
-					<deployPath>/tmp/tomcat-deploy</deployPath>
-				</configuration>
+				<executions>
+					<execution>
+						<id>deploy-frontend</id>
+						<phase>install</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+						<configuration>
+							<serverType>TOMCAT</serverType>
+							<deployPath>/tmp/tomcat-deploy</deployPath>
+							<port>8082</port>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

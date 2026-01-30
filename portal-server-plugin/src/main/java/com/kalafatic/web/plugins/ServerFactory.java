@@ -19,4 +19,10 @@ public class ServerFactory {
                 throw new IllegalArgumentException("Unknown server type: " + type);
         }
     }
+
+    public static Server createServer(ServerType type, int port) {
+        Server server = createServer(type);
+        server.setPort(port);
+        return server;
+    }
 }
