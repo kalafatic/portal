@@ -9,58 +9,61 @@
 
     <ui:define name="content">
         <h:panelGroup rendered="#{sessionScope.username != null}">
-            <div style="margin-bottom: 20px;">
-                <h2>Developer Console</h2>
-                <p>Platform internals and development resources for the Portal environment.</p>
+            <div style="margin-bottom: 30px;">
+                <h1 style="text-align: left; font-size: 28px; color: #000000; text-transform: none; margin-bottom: 5px;">Developer Console</h1>
+                <p style="color: #666666;">Platform internals and development resources for the Portal environment.</p>
             </div>
 
             <div class="ui-g">
                 <div class="ui-g-12 ui-md-6">
-                    <p:panel header="System Metrics" style="margin-bottom: 20px;">
+                    <div class="card">
+                        <h2 class="card-title">System Metrics</h2>
                         <p:panelGrid columns="2" layout="grid" styleClass="dev-grid">
-                            <h:outputText value="Java Version:" style="font-weight: bold;"/>
-                            <h:outputText value="#{systemBean.javaVersion}"/>
+                            <h:outputText value="Java Version:" styleClass="metric-label"/>
+                            <h:outputText value="#{systemBean.javaVersion}" styleClass="metric-value"/>
 
-                            <h:outputText value="JVM Vendor:" style="font-weight: bold;"/>
-                            <h:outputText value="#{systemBean.jvmVendor}"/>
+                            <h:outputText value="JVM Vendor:" styleClass="metric-label"/>
+                            <h:outputText value="#{systemBean.jvmVendor}" styleClass="metric-value"/>
 
-                            <h:outputText value="OS Name:" style="font-weight: bold;"/>
-                            <h:outputText value="#{systemBean.osName}"/>
+                            <h:outputText value="OS Name:" styleClass="metric-label"/>
+                            <h:outputText value="#{systemBean.osName}" styleClass="metric-value"/>
 
-                            <h:outputText value="Architecture:" style="font-weight: bold;"/>
-                            <h:outputText value="#{systemBean.architecture}"/>
+                            <h:outputText value="Architecture:" styleClass="metric-label"/>
+                            <h:outputText value="#{systemBean.architecture}" styleClass="metric-value"/>
 
-                            <h:outputText value="Server Info:" style="font-weight: bold;"/>
-                            <h:outputText value="#{systemBean.serverInfo}"/>
+                            <h:outputText value="Server Info:" styleClass="metric-label"/>
+                            <h:outputText value="#{systemBean.serverInfo}" styleClass="metric-value"/>
 
-                            <h:outputText value="Server Time:" style="font-weight: bold;"/>
-                            <h:outputText value="#{systemBean.serverTime}"/>
+                            <h:outputText value="Server Time:" styleClass="metric-label"/>
+                            <h:outputText value="#{systemBean.serverTime}" styleClass="metric-value"/>
                         </p:panelGrid>
-                    </p:panel>
+                    </div>
                 </div>
 
                 <div class="ui-g-12 ui-md-6">
-                    <p:panel header="Application Metadata" style="margin-bottom: 20px;">
+                    <div class="card">
+                        <h2 class="card-title">Application Metadata</h2>
                         <p:panelGrid columns="2" layout="grid" styleClass="dev-grid">
-                            <h:outputText value="Portal Version:" style="font-weight: bold;"/>
+                            <h:outputText value="Portal Version:" styleClass="metric-label"/>
                             <h:panelGroup>
                                 <span class="status-badge">#{systemBean.appVersion}</span>
                             </h:panelGroup>
 
-                            <h:outputText value="Environment:" style="font-weight: bold;"/>
-                            <h:outputText value="Production / Staging"/>
+                            <h:outputText value="Environment:" styleClass="metric-label"/>
+                            <h:outputText value="Production / Staging" styleClass="metric-value"/>
 
-                            <h:outputText value="Build Timestamp:" style="font-weight: bold;"/>
-                            <h:outputText value="2026-01-28"/>
+                            <h:outputText value="Build Timestamp:" styleClass="metric-label"/>
+                            <h:outputText value="2026-01-28" styleClass="metric-value"/>
                         </p:panelGrid>
-                    </p:panel>
+                    </div>
                 </div>
             </div>
 
-            <p:panel header="Core Dependencies" style="margin-bottom: 20px;">
+            <div class="card">
+                <h2 class="card-title">Core Dependencies</h2>
                 <p:dataTable var="dep" value="#{developBean.dependencies}">
                     <p:column headerText="Dependency">
-                        <h:outputText value="#{dep.name}" style="font-weight: bold;"/>
+                        <h:outputText value="#{dep.name}" style="font-weight: 600;"/>
                     </p:column>
                     <p:column headerText="Version" style="width: 150px;">
                         <h:outputText value="#{dep.version}"/>
@@ -69,16 +72,16 @@
                         <h:outputText value="#{dep.purpose}"/>
                     </p:column>
                 </p:dataTable>
-            </p:panel>
+            </div>
 
-            <p:panel header="Developer Resources">
+            <div class="card">
+                <h2 class="card-title">Developer Resources</h2>
                 <p:dataList value="#{developBean.resources}" var="res" type="unordered" itemType="none">
-                    <f:facet name="header">Quick Links</f:facet>
-                    <h:outputLink value="#{res.url}" target="_blank" style="color: #357EC7; font-weight: bold; text-decoration: none;">
-                        <i class="pi pi-external-link" style="margin-right: 5px;"></i>#{res.name}
+                    <h:outputLink value="#{res.url}" target="_blank" style="color: #005fb8; text-decoration: none;">
+                        <i class="pi pi-external-link" style="margin-right: 8px;"></i>#{res.name}
                     </h:outputLink>
                 </p:dataList>
-            </p:panel>
+            </div>
 
             <div style="margin-top: 20px;">
                 <h3>Platform Architecture</h3>

@@ -8,11 +8,11 @@
     <ui:define name="title">Login - Portal</ui:define>
 
     <ui:define name="content">
-        <div style="display: flex; justify-content: center; align-items: center; padding: 60px 0;">
-            <p:panel style="width: 450px; border: 2px solid #000 !important;">
-                <f:facet name="header">
+        <div class="auth-container">
+            <div class="card auth-card">
+                <h2 class="card-title">
                     <i class="pi pi-lock" style="margin-right: 10px;"></i>SECURE AUTHENTICATION
-                </f:facet>
+                </h2>
                 <h:form id="loginForm">
                     <p:focus for="username" />
                     <p:messages id="messages" showDetail="true" closable="true">
@@ -20,10 +20,10 @@
                     </p:messages>
 
                     <div style="padding: 10px;">
-                        <p:outputLabel for="username" value="USERNAME" style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 12px; color: #666;"/>
+                        <p:outputLabel for="username" value="USERNAME" styleClass="form-label" style="font-size: 12px; color: #666;"/>
                         <p:inputText id="username" value="#{loginBean.username}" required="true" style="width: 100%; margin-bottom: 15px;"/>
 
-                        <p:outputLabel for="password" value="PASSWORD" style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 12px; color: #666;"/>
+                        <p:outputLabel for="password" value="PASSWORD" styleClass="form-label" style="font-size: 12px; color: #666;"/>
                         <p:password id="password" value="#{loginBean.password}" required="true" style="width: 100%; margin-bottom: 10px;"/>
                     </div>
 
@@ -31,10 +31,10 @@
                         <p:commandButton value="Login" action="#{loginBean.login}" styleClass="btn" update="loginForm"/>
                     </div>
                 </h:form>
-                <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 15px; text-align: center; font-size: 13px;">
-                    <h:link outcome="resetPassword" value="Trouble logging in? Reset Password" />
+                <div style="border-top: 1px solid #eeeeee; margin-top: 20px; padding-top: 15px; text-align: center;">
+                    <h:link outcome="resetPassword" value="Trouble logging in? Reset Password" styleClass="btn secondary-btn" style="font-size: 13px;"/>
                 </div>
-            </p:panel>
+            </div>
         </div>
     </ui:define>
 
