@@ -35,6 +35,7 @@
             <div style="font-size: 20px; font-weight: bold; color: white; margin-right: 30px; letter-spacing: 2px;">PORTAL</div>
             <ul class="nav-links">
                 <li><h:link outcome="index" value="Home" styleClass="#{view.viewId.contains('index') ? 'nav-active' : ''}" /></li>
+                <li><h:link outcome="profile" value="Profile" rendered="#{sessionScope.username != null}" styleClass="#{view.viewId.contains('profile') ? 'nav-active' : ''}" /></li>
                 <li><h:link outcome="develop" value="Develop" rendered="#{sessionScope.username != null}" styleClass="#{view.viewId.contains('develop') ? 'nav-active' : ''}" /></li>
                 <li><h:link outcome="resetPassword" value="Security" styleClass="#{view.viewId.contains('resetPassword') ? 'nav-active' : ''}" /></li>
             </ul>
