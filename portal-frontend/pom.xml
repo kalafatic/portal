@@ -46,6 +46,12 @@
 			<artifactId>portal-common</artifactId>
 			<version>2.6.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.kalafatic.web</groupId>
+			<artifactId>portal-server-plugin</artifactId>
+			<version>2.6.1</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- JSF API -->
 		<dependency>
 			<groupId>javax.faces</groupId>
@@ -89,7 +95,15 @@
 
 				</configuration>
 			</plugin>
-
+			<plugin>
+				<groupId>com.kalafatic.web</groupId>
+				<artifactId>portal-server-plugin</artifactId>
+				<version>2.6.1</version>
+				<configuration>
+					<serverType>TOMCAT</serverType>
+					<deployPath>/tmp/tomcat-deploy</deployPath>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
