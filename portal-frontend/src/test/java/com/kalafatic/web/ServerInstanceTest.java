@@ -10,9 +10,10 @@ public class ServerInstanceTest {
 
     @Test
     public void testTomcatInstance() {
-        Server tomcat = ServerFactory.createServer(ServerType.TOMCAT);
+        Server tomcat = ServerFactory.createServer(ServerType.TOMCAT, 8082);
         assertNotNull(tomcat);
         assertEquals("Apache Tomcat", tomcat.getName());
+        assertEquals(8082, tomcat.getPort());
         tomcat.start();
         tomcat.stop();
     }

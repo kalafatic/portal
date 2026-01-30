@@ -20,15 +20,19 @@ public class ServerMojo extends AbstractMojo {
     @Parameter(property = "deployPath", required = true)
     private File deployPath;
 
+    @Parameter(property = "port")
+    private Integer port;
+
     @Parameter(defaultValue = "${project.build.directory}/${project.build.finalName}.${project.packaging}", readonly = true)
     private File artifact;
 
     public void execute() throws MojoExecutionException {
         try {
             ServerType type = ServerType.valueOf(serverType.toUpperCase());
-            Server server = ServerFactory.createServer(type);
+            Server server = (port != null) ? ServerFactory.createServer(type, port) : ServerFactory.createServer(type);
+            server.setLog(getLog());
 
-            getLog().info("Selected server: " + server.getName());
+            getLog().info("Selected server: " + server.getName() + " on port " + server.getPort());
 
             if (artifact.exists()) {
                 server.deploy(artifact, deployPath);

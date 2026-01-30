@@ -91,10 +91,20 @@
             <groupId>com.kalafatic.web</groupId>
             <artifactId>portal-server-plugin</artifactId>
             <version>2.6.1</version>
-            <configuration>
-                <serverType>JBOSS</serverType>
-                <deployPath>${jboss.deploy.path.backend}</deployPath>
-            </configuration>
+            <executions>
+                <execution>
+                    <id>deploy-backend</id>
+                    <phase>install</phase>
+                    <goals>
+                        <goal>deploy</goal>
+                    </goals>
+                    <configuration>
+                        <serverType>JBOSS</serverType>
+                        <deployPath>/tmp/jboss-deploy</deployPath>
+                        <port>9990</port>
+                    </configuration>
+                </execution>
+            </executions>
           </plugin>
 		</plugins>
 	</build>
