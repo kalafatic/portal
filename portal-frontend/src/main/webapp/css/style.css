@@ -248,13 +248,15 @@ h1 {
 /* Buttons */
 .btn, .ui-button {
     display: inline-block;
-    padding: 8px 20px !important;
+    padding: 10px 15px !important;
     background: #005fb8 !important;
     color: #ffffff !important;
     text-decoration: none;
     border: 1px solid #000000 !important;
     border-radius: 0 !important;
-    font-weight: bold !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     cursor: pointer;
     box-shadow: none !important;
@@ -262,6 +264,10 @@ h1 {
 
 .btn:hover, .ui-button:hover {
     background: #2a6496 !important;
+}
+
+.btn-nav-proportional {
+    padding: 23.5px 15px !important;
 }
 
 /* Developer Platform Elements */
