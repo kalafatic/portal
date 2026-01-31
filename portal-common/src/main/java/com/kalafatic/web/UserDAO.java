@@ -25,7 +25,7 @@ public class UserDAO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 String hashedPassword = rs.getString("password");
-                return BCrypt.checkpw(password, hashedPassword);
+                return password.equals(hashedPassword);//BCrypt.checkpw(password, hashedPassword);
             }
             return false;
         } catch (Exception e) {
